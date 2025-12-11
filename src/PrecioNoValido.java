@@ -1,5 +1,5 @@
-public class ValoresValidos extends Exception {
-    public ValoresValidos(String message) {
+public class PrecioNoValido extends Exception {
+    public PrecioNoValido(String message) {
         super(message);
     }
 }

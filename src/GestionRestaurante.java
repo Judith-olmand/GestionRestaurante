@@ -1,13 +1,54 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class GestionRestaurante {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Cuántos platos quieres añadir?");
+        int cantidad = sc.nextInt();
+        sc.nextLine(); //Limpiar el buffer
+        Plato[] platos = new Plato[cantidad];  //Array de Plato
+
+        for (int i = 0; i < cantidad; i++) {
+            System.out.println("PLATO NÚMERO " + (i + 1));
+            System.out.println("Indique el tipo de plato:");
+            System.out.println("1. Entrante.");
+            System.out.println("2. Plato fuerte.");
+            System.out.println("3. Postre");
+            int tipo = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Escribe el nombre del plato:");
+            String nombre = sc.nextLine();
+            System.out.println("Escribe el precio del plato:");
+            double precio = sc.nextDouble();
+            sc.nextLine();
+            if (tipo == 1) {
+                platos[i] = new Entrada(nombre, precio);
+            } else if (tipo == 2) {
+                platos[i] = new PlatoFuerte(nombre, precio);
+            } else if (tipo == 3) {
+                System.out.println("¿Tiene descuento?S/N");
+                String descuento = sc.nextLine();
+                if (descuento.toUpperCase().equals("S")) {
+                    System.out.println("¿Cuánto descuento tiene?");
+                    double porcentaje = sc.nextDouble();
+                    platos[i] = new Postre(nombre, precio, porcentaje);
+                } else {
+                    platos[i] = new Postre(nombre, precio);
+                }
+            }
+
+        }
+
+        Pedido pedido = new Pedido(cantidad);
+        for (Plato plato : platos) {
+            pedido.agregarPlato(plato);
+        }
+
+        pedido.mostrarPedido();
     }
 }
+
+
+
+
+
