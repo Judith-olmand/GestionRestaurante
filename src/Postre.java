@@ -1,4 +1,12 @@
+import java.util.InputMismatchException;
+
 public class Postre extends Plato{
+    /**
+     * Creo el constructor con el throws de la excepcion
+     * @param nombre
+     * @param precio
+     * @throws PrecioNoValido
+     */
     public Postre(String nombre, double precio) throws PrecioNoValido{
         super(nombre, precio);
     }
@@ -19,7 +27,6 @@ public class Postre extends Plato{
      * @param descuento --> porcentaje de 1 a 100
      * @return
      */
-    @Override
     public double calcularPrecio(int descuento){
         if (descuento <= 0 || descuento > 100){
             descuento = 0;

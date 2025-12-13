@@ -2,7 +2,7 @@ public abstract class Plato {
     /**
      * Creo atributos encapsulados (private)
      */
-    final double iva = 1.21;
+    private static final double iva = 1.21;
     private String nombre;
     private double precioBase;
 
@@ -53,7 +53,6 @@ public abstract class Plato {
      * Creo el metodo abstracto que devuelve un numero decimal
      */
     public abstract double calcularPrecio();
-    public abstract double calcularPrecio(int descuento);
     /**
      * Añado el toString para mostrar la informacion
      * @return

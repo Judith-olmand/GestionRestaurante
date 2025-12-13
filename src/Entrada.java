@@ -27,6 +27,5 @@ public class Entrada extends Plato{
     @Override
     public String toString() {
         return "Entrada{" + getNombre() + ", precio base: " + getPrecioBase() + "€, precio total: " + calcularPrecio() + "€}";
-
     }
 }
